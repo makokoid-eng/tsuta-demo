@@ -10,6 +10,8 @@ PURPOSE:
     document.querySelectorAll('.reveal').forEach(el => el.classList.add('is-in'));
     return;
   }
+  // このクラスが付いて初めて CSS が .reveal を隠す。JSが読み込めない環境では隠さない。
+  document.documentElement.classList.add('js-reveal');
   const io = new IntersectionObserver((entries) => {
     entries.forEach(e => {
       if (e.isIntersecting) { e.target.classList.add('is-in'); io.unobserve(e.target); }
